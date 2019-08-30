@@ -1,0 +1,25 @@
+title:              samyak-jn
+email:              samyak.jn11@gmail.com
+description:        The place where, I express and write.
+author:             Samyak Jain
+#baseurl:            "/startbootstrap-clean-blog-jekyll"
+url:                "https://samyak-jn.github.io"
+theme:              jekyll-theme-clean-blog
+
+# Social Profiles
+twitter_username:   jn_samyak
+github_username:    samyak-jn
+#facebook_username:  StartBootstrap
+linkedin_username:  samyak-jn
+
+# Add your google-analytics ID here to activate google analytics
+#google_analytics:   UA-XXXXXXXXX-X # out your google-analytics code
+
+# Build settings
+markdown:           kramdown
+paginate:           5
+paginate_path:      "/posts/page:num/"
+plugins:
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap ## Uncomment this line to silently generate a sitemaps.org compliant sitemap for your Jekyll site
