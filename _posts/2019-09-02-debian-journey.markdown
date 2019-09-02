@@ -9,7 +9,7 @@ background: '/img/posts/debian.jpg'
 <b>The journey with Debian was and still is a surprise for me, which I never expected to be this fulfilling. </b>
 <p>It all started with a mistake, when one day I accidentally formatted my laptop  in which windows and Linux were in dual boot. It was the time when I started reading Kushal Das' book," Linux for you and me" and wondered what I wanted to do and what could I do as a computer science undergraduate!!<br> 
 I wanted something different, and out of the box. In the overrated world of machine learning, data science and cybersecurity, open-source was something that lured me in through which I thought I could make a real impact into the world.</p>
-<p><u>There was a time when my brain buffered exceeding my RAM limit</u> :P</p>
+<p><u>There was a time when my brain buffer was exceeding my RAM limit</u> :P</p>
 <p>So, basically there were two instances that I still remember, one was repairing my laptop and make it bootable again, which was pretty hectic work. I remember that I almost cried, and it is pretty much hilarious to say, I made my /swap partition to 10gib, and one of my friend who was helping me with the process almost laughed, and I was like where did I go wrong?
 That was the time I started learning about how things work and what the architecture was all about.
 I installed Linux Mint as a newbie (<u>still a newbie</u> :P) and then finally switched to Debian as using docker inside mint, was making me frustrated.</p>
