@@ -12,7 +12,7 @@ As we all know,
 
  Before digging deeper into the discussion:
 
- [Following a `formal definition before the discussion is good for health and mind to` ] :P
+ [Following a `formal definition before the discussion is good for health and mind too` ] :P
 
 <i> “An application program interface (API) is a set of routines, protocols, and tools for building software applications. An API specifies how software components should interact. Additionally, APIs are used when programming graphical user interface (GUI) components. A good API makes it easier to develop a program by providing all the building blocks. A programmer then puts the blocks together.” </i>
 <p>
