@@ -7,7 +7,6 @@ img: 2019-1.jpeg
 ---
 
 Heya,
-<br>
 <p>
 <h3>2019</h3> has almost <b>waved adieu</b> \o/
 <br>
