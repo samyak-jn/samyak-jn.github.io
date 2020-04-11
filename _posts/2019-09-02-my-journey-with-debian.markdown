@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "My journey with Debian"
-subtitle: "This is where *FOSS* entered my life !!"
+title: My journey with Debian
+description: This is where *FOSS* entered my life !!
 date: 2019-09-02 11:11:00 +0500
-background: '/img/posts/debian.jpg'
+img: debian.jpg
 ---
 
 <b>The journey with Debian was and still is a surprise for me, which I never expected to be this fulfilling. </b>
