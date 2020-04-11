@@ -2,7 +2,7 @@ title: Samyak's Space!
 description: > # this means to ignore newlines until "baseurl:"
   The place where, I express and write.
 permalink: ':title/'
-baseurl: "/blog"
+#baseurl: "/blog"
 url: "https://samyak-jn.github.io/"
 site-twitter: https://twitter.com/samyak__jn
 
