@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Everyone knows about APIs, but yet mislead with facts!"
-subtitle: "Giving a clear picture to Application Programming Interface a.k.a APIs"
+description: Giving a clear picture to Application Programming Interface a.k.a APIs
 date: 2019-09-02 11:11:00 +0500
-background: '/img/posts/API1.png'
+img: API1.png
 ---
 
 As we all know, 
@@ -44,8 +44,10 @@ As we all know,
   <b>So, an overview that how an API is used</b>?<br>
   <br>
   This area covers a basic overview that how an API is being used.
-  <img src='/img/posts/API2.png'>
-  Whenever, an <u><b>API call</b></u> is made b/w two systems (websites, desktops et al) and link them up, they are supposed to be in integration.
+</p>
+
+![api]({{site.baseurl}}/assets/img/API2.png)
+Whenever, an <u><b>API call</b></u> is made b/w two systems (websites, desktops et al) and link them up, they are supposed to be in integration.
   The integration is <b><u>two-sided</u></b>, one being <b>server</b> (we talked about it earlier). The fact being that the server is providing the API. Logically, API is nothing but another program that is running on one of the servers.
   The opposite side of the server is the <b>Client</b>. 
   The Client is said to be another separate program that is aware of the data available through API and knows how to manipulate it.
