@@ -8,7 +8,7 @@ site-twitter: https://twitter.com/samyak__jn
 
 # Author Settings
 author: Samyak Jain
-author-img: samyak-jain.jpg 
+author-img: Samyak-1.jpeg 
 about-author: A third-year, Under-Graduate student pursuing Computer Science and Engineering. A newbie in the field of open-source. Always hungry to keep learning. 
 social-twitter: samyak__jn
 #social-facebook: # add your Facebook handle
@@ -17,7 +17,7 @@ social-linkedin: samyak-jn
 social-email: samyak.jn11@gmail.com
 
 # Disqus
-discus-identifier: samyak-jn
+#discus-identifier: samyak-jn
 
 # Tracker
 analytics: # Google Analytics
