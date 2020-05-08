@@ -3,7 +3,7 @@ description: > # this means to ignore newlines until "baseurl:"
   The place where, I express and write.
 permalink: ':title/'
 #baseurl: "/blog"
-url: "https://samyak-jn.github.io/"
+url: "https://samyak-jn.tk/"
 site-twitter: https://twitter.com/samyak__jn
 
 # Author Settings
