@@ -2,7 +2,6 @@ title: Samyak's Space!
 description: > # this means to ignore newlines until "baseurl:"
   The place where, I express and write.
 permalink: ':title/'
-#baseurl: "/blog"
 url: "https://samyak-jn.tk/"
 site-twitter: https://twitter.com/samyak__jn
 
@@ -20,7 +19,7 @@ social-email: samyak.jn11@gmail.com
 #discus-identifier: samyak-jn
 
 # Tracker
-analytics: # Google Analytics
+analytics:  UA-163418682-1 
 
 # Build Settings
 markdown: kramdown
