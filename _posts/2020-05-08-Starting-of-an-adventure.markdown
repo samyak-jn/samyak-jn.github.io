@@ -33,10 +33,10 @@ I kept contributing by taking one step at a time towards the team. I have writte
 
 As the saying goes, "Taking rejection positively or negatively depends upon us. It's our perspective"!
 
-#### April 15, 2020:
+#### March 15, 2020:
 
 I was so worried to choose a project (thinking am I eligible enough?). 
-I still remember, how on April 15th me and [utkarsh2102](https://twitter.com/utkarsh2102/) (for whom I'm always thankful :D) discussed about the project, and that was it. At the end of the day I messaged one of the mentors of the project, **cdesai**, asking if it was too late to start.
+I still remember, how on March 15th me and [utkarsh2102](https://twitter.com/utkarsh2102/) (for whom I'm always thankful :D) discussed about the project, and that was it. At the end of the day I messaged one of the mentors of the project, **cdesai**, asking if it was too late to start.
 
 He politely replied, "Hello Samyak, it definitely **isn't too late** and if you're confused about anything at all, feel free to ask as many questions as you'd like".
 He has been a positive motivator throughout the process. Thanks for reviewing my proposal and guiding me.
