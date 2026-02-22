@@ -1,19 +1,589 @@
----
-layout: main
----
-{% for post in paginator.posts %}
-<article class="post">
-  {% if post.img %}
-    <a class="post-thumbnail" style="background-image: url({{"/assets/img/" | prepend: site.baseurl | append : post.img}})" href="{{post.url | prepend: site.baseurl}}"></a>
-  {% else %}
-  {% endif %}
-  <div class="post-content">
-    <h2 class="post-title"><a href="{{post.url | prepend: site.baseurl}}">{{post.title}}</a></h2>
-    <p>{{ post.content | strip_html | truncatewords: 15 }}</p>
-    <span class="post-date">{{post.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;—&nbsp;</span>
-    <span class="post-words">{% capture words %}{{ post.content | number_of_words }}{% endcapture %}{% unless words contains "-" %}{{ words | plus: 250 | divided_by: 250 | append: " minute read" }}{% endunless %}</span>
-  </div>
-</article>
-{% endfor %}
-
-{% include pagination.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Samyak Jain - Software Engineer, Open Source Contributor, and Release Engineer at Red Hat. Fedora Release Engineering Lead.">
+    <title>Samyak Jain | Software Engineer & Open Source Contributor</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/enhancements.css">
+    <link rel="stylesheet" href="assets/css/opensource.css">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="navbar-content">
+            <a href="index.html" class="navbar-brand">Samyak Jain</a>
+            
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-nav" id="navbar-nav" aria-expanded="false">
+                <li><a href="index.html" class="navbar-link">Home</a></li>
+                <li><a href="about.html" class="navbar-link">About</a></li>
+                <li><a href="portfolio.html" class="navbar-link">Portfolio</a></li>
+                <li><a href="blog.html" class="navbar-link">Blog</a></li>
+                <li><a href="contact.html" class="navbar-link">Contact</a></li>
+                <li>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10 10 0 01-19.8 0 .75.75 0 01.982-.98zM15 6a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <main id="main-content" class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-greeting">Hi, I'm</div>
+                <h1 class="hero-title">
+                    <span class="typing-animation">Samyak Jain</span>
+                </h1>
+                <p class="hero-subtitle">
+                    <span class="role-badge">Software Engineer</span>
+                    <span class="role-separator">·</span>
+                    <span class="role-badge">Open Source Contributor</span>
+                    <span class="role-separator">·</span>
+                    <span class="role-badge">Release Engineer</span>
+                </p>
+                <p class="hero-description">
+                    I build dependable systems and help open-source communities scale through clean engineering, 
+                    thoughtful processes, and strong collaboration.
+                </p>
+                <div class="hero-cta">
+                    <a href="about.html" class="btn btn-primary">Learn More</a>
+                    <a href="portfolio.html" class="btn btn-secondary">View Work</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Open Source Showcase - The "OMG" Element -->
+        <section class="section open-source-showcase">
+            <div class="container">
+                <div class="showcase-header reveal">
+                    <h2 class="section-title">Building Open Source Communities</h2>
+                    <p style="text-align: center; color: var(--color-text-secondary); font-size: var(--font-size-lg); max-width: 800px; margin: var(--spacing-lg) auto var(--spacing-2xl);">
+                        As Fedora Release Engineering Lead and active contributor to Debian, I work at the intersection 
+                        of infrastructure, automation, and community collaboration.
+                    </p>
+                </div>
+                
+                <!-- Interactive Contribution Visualization -->
+                <div class="contribution-visualization reveal">
+                    <div class="viz-header">
+                        <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-md); color: var(--color-text-primary);">My Open Source Journey</h3>
+                        <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-xl);">Hover over the timeline to explore</p>
+                    </div>
+                    <div class="timeline-interactive">
+                        <div class="timeline-track">
+                            <div class="timeline-marker" data-year="2019" data-event="Started contributing to Debian">
+                                <div class="marker-dot"></div>
+                                <div class="marker-content">
+                                    <div class="marker-year">2019</div>
+                                    <div class="marker-title">Debian Contributions</div>
+                                    <div class="marker-desc">Began my open source journey</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker" data-year="2020" data-event="Google Summer of Code with Debian">
+                                <div class="marker-dot"></div>
+                                <div class="marker-content">
+                                    <div class="marker-year">2020</div>
+                                    <div class="marker-title">GSoC Participant</div>
+                                    <div class="marker-desc">Selected for Google Summer of Code</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker" data-year="2021" data-event="Joined Red Hat">
+                                <div class="marker-dot"></div>
+                                <div class="marker-content">
+                                    <div class="marker-year">2021</div>
+                                    <div class="marker-title">Red Hat</div>
+                                    <div class="marker-desc">Senior Software Engineer</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker active" data-year="2023" data-event="Fedora Release Engineering Lead">
+                                <div class="marker-dot"></div>
+                                <div class="marker-content">
+                                    <div class="marker-year">2023</div>
+                                    <div class="marker-title">Fedora Lead</div>
+                                    <div class="marker-desc">Release Engineering Lead</div>
+                                </div>
+                            </div>
+                            <div class="timeline-marker" data-year="2024" data-event="Present">
+                                <div class="marker-dot"></div>
+                                <div class="marker-content">
+                                    <div class="marker-year">2024</div>
+                                    <div class="marker-title">Present</div>
+                                    <div class="marker-desc">Continuing to build & mentor</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid reveal">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-label">Contributions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-label">Years Active</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-label">Conferences</div>
+                    </div>
+                </div>
+                
+                <!-- Community Cards with 3D Effect -->
+                <div class="community-showcase reveal">
+                    <h3 style="text-align: center; font-size: var(--font-size-xl); margin-bottom: var(--spacing-xl); color: var(--color-text-primary);">Communities I Work With</h3>
+                    <div class="community-grid-3d">
+                        <div class="community-card-3d" data-community="fedora">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <div class="community-icon-large">
+                                        <!-- Fedora Logo -->
+                                        <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M50 20C33.431 20 20 33.431 20 50C20 66.569 33.431 80 50 80C66.569 80 80 66.569 80 50C80 33.431 66.569 20 50 20ZM50 75C36.193 75 25 63.807 25 50C25 36.193 36.193 25 50 25C63.807 25 75 36.193 75 50C75 63.807 63.807 75 50 75Z"/>
+                                            <path d="M50 30C38.954 30 30 38.954 30 50C30 61.046 38.954 70 50 70C61.046 70 70 61.046 70 50C70 38.954 61.046 30 50 30ZM50 65C42.82 65 37 59.18 37 52C37 44.82 42.82 39 50 39C57.18 39 63 44.82 63 52C63 59.18 57.18 65 50 65Z"/>
+                                            <path d="M50 40C45.582 40 42 43.582 42 48C42 52.418 45.582 56 50 56C54.418 56 58 52.418 58 48C58 43.582 54.418 40 50 40Z"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Fedora</h3>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Fedora</h3>
+                                    <p class="card-role">Release Engineering Lead</p>
+                                    <p class="card-desc">Leading release processes for one of the world's most popular Linux distributions</p>
+                                    <div class="card-stats">
+                                        <span>100+ Releases</span>
+                                        <span>•</span>
+                                        <span>Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="community-card-3d" data-community="debian">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <div class="community-icon-large">
+                                        <!-- Debian Logo (Spiral) -->
+                                        <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M50 10C30.67 10 15 25.67 15 45C15 64.33 30.67 80 50 80C69.33 80 85 64.33 85 45C85 25.67 69.33 10 50 10ZM50 70C36.19 70 25 58.81 25 45C25 31.19 36.19 20 50 20C63.81 20 75 31.19 75 45C75 58.81 63.81 70 50 70Z"/>
+                                            <path d="M50 25C40.06 25 32 33.06 32 43C32 52.94 40.06 61 50 61C59.94 61 68 52.94 68 43C68 33.06 59.94 25 50 25ZM50 55C45.58 55 42 51.42 42 47C42 42.58 45.58 39 50 39C54.42 39 58 42.58 58 47C58 51.42 54.42 55 50 55Z"/>
+                                            <circle cx="50" cy="47" r="5"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Debian</h3>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Debian</h3>
+                                    <p class="card-role">GSoC Contributor</p>
+                                    <p class="card-desc">Contributing to packaging, infrastructure, and community initiatives</p>
+                                    <div class="card-stats">
+                                        <span>GSoC 2020</span>
+                                        <span>•</span>
+                                        <span>Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="community-card-3d" data-community="redhat">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <div class="community-icon-large">
+                                        <!-- Red Hat Logo (Shadowman) -->
+                                        <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M50 15C30.67 15 15 30.67 15 50C15 69.33 30.67 85 50 85C69.33 85 85 69.33 85 50C85 30.67 69.33 15 50 15ZM50 75C36.19 75 25 63.81 25 50C25 36.19 36.19 25 50 25C63.81 25 75 36.19 75 50C75 63.81 63.81 75 50 75Z"/>
+                                            <path d="M50 30C42.27 30 36 36.27 36 44C36 51.73 42.27 58 50 58C57.73 58 64 51.73 64 44C64 36.27 57.73 30 50 30ZM50 52C47.79 52 46 50.21 46 48C46 45.79 47.79 44 50 44C52.21 44 54 45.79 54 48C54 50.21 52.21 52 50 52Z"/>
+                                            <path d="M35 60L40 65L35 70L30 65L35 60Z"/>
+                                            <path d="M65 60L70 65L65 70L60 65L65 60Z"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Red Hat</h3>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Red Hat</h3>
+                                    <p class="card-role">Senior Software Engineer</p>
+                                    <p class="card-desc">Building production systems and infrastructure at scale</p>
+                                    <div class="card-stats">
+                                        <span>3+ Years</span>
+                                        <span>•</span>
+                                        <span>Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="community-card-3d" data-community="linux">
+                            <div class="card-inner">
+                                <div class="card-front">
+                                    <div class="community-icon-large">
+                                        <!-- Linux Tux Penguin -->
+                                        <svg viewBox="0 0 100 100" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M50 20C35.64 20 24 31.64 24 46C24 60.36 35.64 72 50 72C64.36 72 76 60.36 76 46C76 31.64 64.36 20 50 20ZM50 66C40.06 66 32 57.94 32 48C32 38.06 40.06 30 50 30C59.94 30 68 38.06 68 48C68 57.94 59.94 66 50 66Z"/>
+                                            <ellipse cx="42" cy="42" rx="4" ry="5"/>
+                                            <ellipse cx="58" cy="42" rx="4" ry="5"/>
+                                            <path d="M50 50Q45 55 50 58Q55 55 50 50"/>
+                                            <path d="M35 60Q30 65 35 68"/>
+                                            <path d="M65 60Q70 65 65 68"/>
+                                        </svg>
+                                    </div>
+                                    <h3>Linux</h3>
+                                </div>
+                                <div class="card-back">
+                                    <h3>Linux Ecosystem</h3>
+                                    <p class="card-role">Infrastructure & Tooling</p>
+                                    <p class="card-desc">Contributing to Linux distribution infrastructure and release tooling</p>
+                                    <div class="card-stats">
+                                        <span>Multiple Distros</span>
+                                        <span>•</span>
+                                        <span>Active</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <div class="hero-scroll-indicator" style="position: relative; margin-top: var(--spacing-xl);">
+            <span>Scroll to explore</span>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5"/>
+            </svg>
+        </div>
+        
+        <!-- Featured Posts Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Latest Blog Posts</h2>
+                <div class="grid grid-3" id="featured-posts">
+                    <!-- Posts will be loaded dynamically -->
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                    <a href="blog.html" class="btn btn-outline">View All Posts</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Projects Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="grid grid-3" id="featured-projects">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                    <a href="portfolio.html" class="btn btn-outline">View All Projects</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Conferences Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Conferences & Speaking</h2>
+                <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: var(--spacing-2xl); max-width: 700px; margin-left: auto; margin-right: auto; font-size: var(--font-size-lg);">
+                    Presenting, volunteering, and contributing at open-source conferences worldwide
+                </p>
+                <div class="grid grid-3" id="featured-conferences">
+                    <!-- Conferences will be loaded dynamically -->
+                </div>
+                <div style="text-align: center; margin-top: var(--spacing-2xl);">
+                    <a href="about.html#conferences" class="btn btn-outline">View All Conferences</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Samyak Jain. All rights reserved.</p>
+                <ul class="social-links">
+                    <li>
+                        <a href="https://github.com/samyak-jn" class="social-link" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/in/samyak-jn" class="social-link" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/jnsamyak" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    
+    <!-- JavaScript -->
+    <script type="module" src="assets/js/main.js"></script>
+    <script type="module" src="assets/js/animations.js"></script>
+    <script type="module">
+        // Load featured posts and projects
+        async function loadFeatured() {
+            try {
+                // Load featured posts
+                const indexResponse = await fetch('data/posts/index.json');
+                const postIds = await indexResponse.json();
+                
+                const postPromises = postIds.slice(0, 3).map(id => 
+                    fetch(`data/posts/${id}.json`).then(res => res.json())
+                );
+                const posts = await Promise.all(postPromises);
+                const featuredPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                const postsContainer = document.getElementById('featured-posts');
+                if (postsContainer) {
+                    postsContainer.innerHTML = featuredPosts.map((post, index) => `
+                        <article class="card reveal" style="animation-delay: ${index * 0.1}s;">
+                            ${post.image ? `
+                                <div class="card-image-wrapper" style="margin-bottom: 1rem; border-radius: var(--border-radius); overflow: hidden; height: 180px;">
+                                    <img src="${post.image}" alt="${post.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                                </div>
+                            ` : ''}
+                            <h3 class="card-title">
+                                <a href="post.html?id=${post.id}" style="text-decoration: none; color: inherit;">
+                                    ${post.title}
+                                </a>
+                            </h3>
+                            <div class="card-meta">
+                                <span>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                            </div>
+                            <p class="card-description">${post.excerpt || post.content.substring(0, 120) + '...'}</p>
+                            <a href="post.html?id=${post.id}" class="btn btn-primary">Read More</a>
+                        </article>
+                    `).join('');
+                }
+                
+                // Load featured projects
+                const projectsIndexResponse = await fetch('data/projects/index.json');
+                const projectIds = await projectsIndexResponse.json();
+                
+                const projectPromises = projectIds.slice(0, 3).map(id => 
+                    fetch(`data/projects/${id}.json`).then(res => res.json())
+                );
+                const projects = await Promise.all(projectPromises);
+                const featuredProjects = projects;
+                
+                const projectsContainer = document.getElementById('featured-projects');
+                if (projectsContainer) {
+                    projectsContainer.innerHTML = featuredProjects.map((project, index) => `
+                        <article class="card reveal card-3d hover-lift glow-on-hover" style="animation-delay: ${index * 0.1}s;">
+                            ${project.image ? `
+                                <div class="card-image-wrapper shimmer" style="margin-bottom: 1rem; border-radius: var(--border-radius); overflow: hidden; height: 180px;">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23f0f0f0' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' text-anchor='middle' dy='.3em' fill='%23999'%3ELoading...%3C/text%3E%3C/svg%3E" data-src="${project.image}" alt="${project.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                </div>
+                            ` : ''}
+                            <h3 class="card-title">${project.title}</h3>
+                            <p class="card-description">${project.description}</p>
+                            <div class="card-footer">
+                                ${project.github ? `<a href="${project.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline magnetic-btn">GitHub</a>` : ''}
+                                ${project.demo ? `<a href="${project.demo}" target="_blank" rel="noopener noreferrer" class="btn btn-primary magnetic-btn">Live Demo</a>` : ''}
+                            </div>
+                        </article>
+                    `).join('');
+                
+                // Lazy load project images
+                const projectImages = projectsContainer.querySelectorAll('img[data-src]');
+                projectImages.forEach(img => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    observer.observe(img);
+                });
+                }
+                
+                // Load featured conferences
+                const conferencesIndexResponse = await fetch('data/conferences/index.json');
+                const conferenceIds = await conferencesIndexResponse.json();
+                
+                const conferencePromises = conferenceIds.slice(0, 3).map(id => 
+                    fetch(`data/conferences/${id}.json`).then(res => res.json())
+                );
+                const conferences = await Promise.all(conferencePromises);
+                const featuredConferences = conferences.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                const conferencesContainer = document.getElementById('featured-conferences');
+                if (conferencesContainer) {
+                    conferencesContainer.innerHTML = featuredConferences.map((conf, index) => {
+                        const date = new Date(conf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                        const tags = conf.tags.slice(0, 2).map(tag => `<span class="tag">${tag}</span>`).join('');
+                        
+                        return `
+                            <article class="card reveal conference-card card-3d hover-lift" style="animation-delay: ${index * 0.1}s;">
+                                <div class="card-image-wrapper shimmer" style="margin-bottom: 1rem; border-radius: var(--border-radius); overflow: hidden; height: 180px;">
+                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23f0f0f0' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' text-anchor='middle' dy='.3em' fill='%23999'%3ELoading...%3C/text%3E%3C/svg%3E" data-src="${conf.image}" alt="${conf.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                </div>
+                                <div class="conference-type pulse" style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--color-bg-secondary); border-radius: 1rem; font-size: 0.75rem; font-weight: 600; color: var(--color-accent); margin-bottom: 0.75rem;">
+                                    ${conf.type}
+                                </div>
+                                <h3 class="card-title">${conf.title}</h3>
+                                <div class="card-meta">
+                                    <span>📍 ${conf.location}</span>
+                                    <span>•</span>
+                                    <span>📅 ${date}</span>
+                                </div>
+                                <p class="card-description">${conf.description}</p>
+                                <div style="margin-top: 1rem;">
+                                    ${tags}
+                                </div>
+                            </article>
+                        `;
+                    }).join('');
+                
+                // Lazy load images
+                const confImages = conferencesContainer.querySelectorAll('img[data-src]');
+                confImages.forEach(img => {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                                observer.unobserve(img);
+                            }
+                        });
+                    });
+                    observer.observe(img);
+                });
+                }
+            } catch (error) {
+                console.error('Error loading featured content:', error);
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadFeatured);
+        
+        // Animate stats counters with smooth easing
+        function animateCounter(element, target, duration = 2500) {
+            let start = 0;
+            const startTime = performance.now();
+            
+            function easeOutCubic(t) {
+                return 1 - Math.pow(1 - t, 3);
+            }
+            
+            function animate(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = easeOutCubic(progress);
+                const current = Math.floor(start + (target - start) * eased);
+                
+                element.textContent = current;
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                } else {
+                    element.textContent = target;
+                }
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Initialize counters when in viewport
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px'
+        };
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumber = entry.target.querySelector('.stat-number');
+                    const target = parseInt(statNumber.dataset.target || statNumber.textContent);
+                    animateCounter(statNumber, target, 2500);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.stat-item').forEach(item => {
+            statsObserver.observe(item);
+        });
+        
+        // Timeline marker interactions with smooth animations
+        document.querySelectorAll('.timeline-marker').forEach(marker => {
+            marker.addEventListener('mouseenter', function() {
+                this.classList.add('active');
+                // Add subtle pulse effect
+                const dot = this.querySelector('.marker-dot');
+                dot.style.animation = 'pulse-dot 1.5s ease-in-out infinite';
+            });
+            
+            marker.addEventListener('mouseleave', function() {
+                this.classList.remove('active');
+                const dot = this.querySelector('.marker-dot');
+                dot.style.animation = 'none';
+            });
+        });
+        
+        // 3D Card interactions - add rotation on mouse move
+        document.querySelectorAll('.community-card-3d').forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                if (!this.querySelector('.card-inner').style.transform.includes('rotateY(180deg)')) {
+                    this.querySelector('.card-inner').style.transform = 
+                        `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const inner = this.querySelector('.card-inner');
+                if (!inner.style.transform.includes('rotateY(180deg)')) {
+                    inner.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
