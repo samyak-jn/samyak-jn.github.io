@@ -1,0 +1,26 @@
+/* ============================================
+   Theme-specific Styles
+   ============================================ */
+
+/* Additional theme utilities can be added here */
+/* Most theme logic is handled via CSS variables in base.css */
+
+/* Print styles */
+@media print {
+  .navbar,
+  .footer,
+  .theme-toggle,
+  .menu-toggle {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
+}
