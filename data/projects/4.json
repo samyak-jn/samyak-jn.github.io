@@ -1,0 +1,9 @@
+{
+  "id": "4",
+  "title": "CSS Framework",
+  "description": "A lightweight, utility-first CSS framework for rapid UI development. Includes a flexible grid system and component library.",
+  "tech": ["CSS3", "SASS", "JavaScript"],
+  "github": "https://github.com/samyak-jn/css-framework",
+  "demo": "https://samyak-jn.github.io/css-framework",
+  "image": "assets/images/profile.jpg"
+}

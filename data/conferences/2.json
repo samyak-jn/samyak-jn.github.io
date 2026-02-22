@@ -1,0 +1,11 @@
+{
+  "id": "2",
+  "title": "DebConf 2023",
+  "type": "Booth Duty & Volunteering",
+  "location": "Kochi, India",
+  "date": "2023-09-10",
+  "description": "Volunteered at the Debian booth, helping attendees understand Debian packaging, release processes, and community contributions.",
+  "image": "assets/images/profile.jpg",
+  "link": null,
+  "tags": ["Debian", "Volunteering", "Community"]
+}

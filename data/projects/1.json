@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "title": "Personal Portfolio Website",
+  "description": "A modern, responsive portfolio website built with vanilla JavaScript, HTML5, and CSS3. Features dark mode, smooth animations, and a blog system.",
+  "tech": ["HTML5", "CSS3", "JavaScript", "GitHub Pages"],
+  "github": "https://github.com/samyak-jn/samyak-jn.github.io",
+  "demo": "https://samyak-jn.github.io",
+  "image": "assets/images/profile.jpg"
+}

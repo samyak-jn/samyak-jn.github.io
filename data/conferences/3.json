@@ -1,0 +1,11 @@
+{
+  "id": "3",
+  "title": "All Things Open 2023",
+  "type": "Presentation",
+  "location": "Raleigh, NC, USA",
+  "date": "2023-10-15",
+  "description": "Spoke about 'Building Trust in Open Source Infrastructure' focusing on automation, process design, and community collaboration.",
+  "image": "assets/images/profile.jpg",
+  "link": null,
+  "tags": ["Open Source", "Infrastructure", "Automation"]
+}

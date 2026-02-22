@@ -1,0 +1,11 @@
+{
+  "id": "3",
+  "title": "JavaScript ES6+ Features You Should Know",
+  "date": "2024-01-05",
+  "author": "Samyak Jain",
+  "readTime": "6 min",
+  "tags": ["javascript", "es6", "programming"],
+  "image": "assets/images/profile.jpg",
+  "excerpt": "Explore essential ES6+ JavaScript features that every modern developer should be familiar with, from arrow functions to async/await.",
+  "content": "JavaScript has evolved significantly since ES6 (ES2015). Here are the most important features you should know.\n\n## Arrow Functions\n\nArrow functions provide a concise syntax:\n\n```javascript\nconst add = (a, b) => a + b;\n```\n\n## Destructuring\n\nExtract values from arrays and objects easily:\n\n```javascript\nconst { name, age } = person;\nconst [first, second] = array;\n```\n\n## Template Literals\n\nCreate strings with embedded expressions:\n\n```javascript\nconst message = `Hello, ${name}!`;\n```\n\n## Modules\n\nOrganize code with import/export:\n\n```javascript\nexport function formatDate(date) { ... }\nimport { formatDate } from './utils.js';\n```\n\n## Async/Await\n\nHandle asynchronous operations elegantly:\n\n```javascript\nasync function fetchData() {\n  const response = await fetch(url);\n  const data = await response.json();\n  return data;\n}\n```\n\n## Spread Operator\n\nCopy arrays and objects:\n\n```javascript\nconst newArray = [...oldArray];\nconst newObj = { ...oldObj };\n```\n\nThese features make JavaScript more powerful and expressive."
+}

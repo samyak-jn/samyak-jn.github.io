@@ -1,0 +1,9 @@
+{
+  "id": "5",
+  "title": "Markdown Editor",
+  "description": "A live markdown editor with preview, syntax highlighting, and export functionality. Built as a progressive web app.",
+  "tech": ["JavaScript", "Marked.js", "PWA", "IndexedDB"],
+  "github": "https://github.com/samyak-jn/markdown-editor",
+  "demo": "https://samyak-jn.github.io/markdown-editor",
+  "image": "assets/images/profile.jpg"
+}

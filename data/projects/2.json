@@ -1,0 +1,9 @@
+{
+  "id": "2",
+  "title": "Task Management App",
+  "description": "A full-featured task management application with local storage, drag-and-drop functionality, and category filtering.",
+  "tech": ["JavaScript", "CSS3", "HTML5", "LocalStorage API"],
+  "github": "https://github.com/samyak-jn/task-manager",
+  "demo": null,
+  "image": "assets/images/profile.jpg"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "4",
+  "title": "Fedora Flock 2023",
+  "type": "Booth Duty & Presentation",
+  "location": "Cork, Ireland",
+  "date": "2023-08-07",
+  "description": "Led Fedora Release Engineering booth and presented on 'Modern Release Processes for Linux Distributions'.",
+  "image": "assets/images/profile.jpg",
+  "link": null,
+  "tags": ["Fedora", "Release Engineering", "Linux"]
+}

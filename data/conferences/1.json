@@ -1,0 +1,11 @@
+{
+  "id": "1",
+  "title": "FOSDEM 2024",
+  "type": "Presentation",
+  "location": "Brussels, Belgium",
+  "date": "2024-02-03",
+  "description": "Presented on 'Fedora Release Engineering: Scaling Linux Distribution Releases' to an international audience of open-source contributors.",
+  "image": "assets/images/profile.jpg",
+  "link": null,
+  "tags": ["Linux", "Release Engineering", "Open Source"]
+}

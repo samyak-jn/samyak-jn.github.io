@@ -1,0 +1,9 @@
+{
+  "id": "3",
+  "title": "Weather Dashboard",
+  "description": "Real-time weather dashboard that displays current conditions, forecasts, and interactive maps using weather APIs.",
+  "tech": ["JavaScript", "API Integration", "CSS3", "Chart.js"],
+  "github": "https://github.com/samyak-jn/weather-dashboard",
+  "demo": "https://samyak-jn.github.io/weather-dashboard",
+  "image": "assets/images/profile.jpg"
+}

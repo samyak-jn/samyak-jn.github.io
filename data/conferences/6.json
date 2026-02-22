@@ -1,0 +1,11 @@
+{
+  "id": "6",
+  "title": "MiniDebConf Goa 2022",
+  "type": "Volunteering & Presentation",
+  "location": "Goa, India",
+  "date": "2022-12-10",
+  "description": "Organized and presented at MiniDebConf, sharing experiences from GSoC and contributing to Debian packaging workshops.",
+  "image": "assets/images/profile.jpg",
+  "link": null,
+  "tags": ["Debian", "GSoC", "Workshop"]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "6",
+  "title": "API Documentation Generator",
+  "description": "Automated API documentation generator that parses code comments and generates beautiful, interactive documentation sites.",
+  "tech": ["Node.js", "JavaScript", "Markdown", "HTML"],
+  "github": "https://github.com/samyak-jn/api-docs-generator",
+  "demo": null,
+  "image": "assets/images/profile.jpg"
+}
