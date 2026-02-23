@@ -112,6 +112,13 @@ class NavigationManager {
     const links = document.querySelectorAll('.navbar-link');
     
     links.forEach(link => {
+      // Skip portfolio links (they should be commented out, but defensive check)
+      const linkHref = link.getAttribute('href') || '';
+      if (linkHref.includes('portfolio.html') || linkHref.includes('portfolio')) {
+        link.style.display = 'none';
+        return;
+      }
+      
       const linkPath = new URL(link.href).pathname;
       if (linkPath === currentPath || 
           (currentPath === '/' && linkPath.includes('index.html')) ||

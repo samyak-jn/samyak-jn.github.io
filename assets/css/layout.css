@@ -78,6 +78,12 @@
   background-color: var(--color-bg-secondary);
 }
 
+/* Hide Portfolio link if it somehow appears (defensive CSS) */
+.navbar-link[href="portfolio.html"],
+.navbar-link[href*="portfolio"] {
+  display: none !important;
+}
+
 /* Mobile Menu Toggle */
 .menu-toggle {
   display: none;
