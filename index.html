@@ -32,7 +32,7 @@
             <ul class="navbar-nav" id="navbar-nav" aria-expanded="false">
                 <li><a href="index.html" class="navbar-link">Home</a></li>
                 <li><a href="about.html" class="navbar-link">About</a></li>
-                <li><a href="portfolio.html" class="navbar-link">Portfolio</a></li>
+                <!-- <li><a href="portfolio.html" class="navbar-link">Portfolio</a></li> -->
                 <li><a href="blog.html" class="navbar-link">Blog</a></li>
                 <li><a href="contact.html" class="navbar-link">Contact</a></li>
                 <li>
@@ -68,7 +68,7 @@
                 </p>
                 <div class="hero-cta">
                     <a href="about.html" class="btn btn-primary">Learn More</a>
-                    <a href="portfolio.html" class="btn btn-secondary">View Work</a>
+                    <!-- <a href="portfolio.html" class="btn btn-secondary">View Work</a> -->
                 </div>
             </div>
         </section>
@@ -289,7 +289,8 @@
             </div>
         </section>
         
-        <!-- Featured Projects Section -->
+        <!-- Featured Projects Section - Commented out for now -->
+        <!--
         <section class="section">
             <div class="container">
                 <h2 class="section-title">Featured Projects</h2>
@@ -301,6 +302,7 @@
                 </div>
             </div>
         </section>
+        -->
         
         <!-- Conferences Section -->
         <section class="section">
@@ -390,7 +392,8 @@
                     `).join('');
                 }
                 
-                // Load featured projects
+                // Load featured projects - Commented out for now
+                /*
                 const projectsIndexResponse = await fetch('data/projects/index.json');
                 const projectIds = await projectsIndexResponse.json();
                 
@@ -433,59 +436,92 @@
                     observer.observe(img);
                 });
                 }
+                */
                 
                 // Load featured conferences
-                const conferencesIndexResponse = await fetch('data/conferences/index.json');
-                const conferenceIds = await conferencesIndexResponse.json();
-                
-                const conferencePromises = conferenceIds.slice(0, 3).map(id => 
-                    fetch(`data/conferences/${id}.json`).then(res => res.json())
-                );
-                const conferences = await Promise.all(conferencePromises);
-                const featuredConferences = conferences.sort((a, b) => new Date(b.date) - new Date(a.date));
-                
-                const conferencesContainer = document.getElementById('featured-conferences');
-                if (conferencesContainer) {
-                    conferencesContainer.innerHTML = featuredConferences.map((conf, index) => {
-                        const date = new Date(conf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
-                        const tags = conf.tags.slice(0, 2).map(tag => `<span class="tag">${tag}</span>`).join('');
-                        
-                        return `
-                            <article class="card reveal conference-card card-3d hover-lift" style="animation-delay: ${index * 0.1}s;">
-                                <div class="card-image-wrapper shimmer" style="margin-bottom: 1rem; border-radius: var(--border-radius); overflow: hidden; height: 180px;">
-                                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23f0f0f0' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' text-anchor='middle' dy='.3em' fill='%23999'%3ELoading...%3C/text%3E%3C/svg%3E" data-src="${conf.image}" alt="${conf.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
-                                </div>
-                                <div class="conference-type pulse" style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--color-bg-secondary); border-radius: 1rem; font-size: 0.75rem; font-weight: 600; color: var(--color-accent); margin-bottom: 0.75rem;">
-                                    ${conf.type}
-                                </div>
-                                <h3 class="card-title">${conf.title}</h3>
-                                <div class="card-meta">
-                                    <span>📍 ${conf.location}</span>
-                                    <span>•</span>
-                                    <span>📅 ${date}</span>
-                                </div>
-                                <p class="card-description">${conf.description}</p>
-                                <div style="margin-top: 1rem;">
-                                    ${tags}
-                                </div>
-                            </article>
-                        `;
-                    }).join('');
-                
-                // Lazy load images
-                const confImages = conferencesContainer.querySelectorAll('img[data-src]');
-                confImages.forEach(img => {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                img.src = img.dataset.src;
-                                img.removeAttribute('data-src');
-                                observer.unobserve(img);
-                            }
+                try {
+                    const conferencesIndexResponse = await fetch('data/conferences/index.json');
+                    if (!conferencesIndexResponse.ok) throw new Error('Failed to load conferences index');
+                    
+                    const conferenceIds = await conferencesIndexResponse.json();
+                    
+                    const conferencePromises = conferenceIds.slice(0, 3).map(id => 
+                        fetch(`data/conferences/${id}.json`)
+                            .then(res => {
+                                if (!res.ok) throw new Error(`Failed to load conference ${id}`);
+                                return res.json();
+                            })
+                            .catch(err => {
+                                console.error(`Error loading conference ${id}:`, err);
+                                return null;
+                            })
+                    );
+                    
+                    const conferences = await Promise.all(conferencePromises);
+                    const featuredConferences = conferences
+                        .filter(conf => conf !== null)
+                        .sort((a, b) => new Date(b.date) - new Date(a.date));
+                    
+                    const conferencesContainer = document.getElementById('featured-conferences');
+                    console.log('Conferences container:', conferencesContainer);
+                    console.log('Featured conferences:', featuredConferences);
+                    
+                    if (conferencesContainer && featuredConferences.length > 0) {
+                        conferencesContainer.innerHTML = featuredConferences.map((conf, index) => {
+                            const date = new Date(conf.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+                            const tags = conf.tags ? conf.tags.slice(0, 2).map(tag => `<span class="tag">${tag}</span>`).join('') : '';
+                            
+                            return `
+                                <article class="card reveal conference-card card-3d hover-lift" style="animation-delay: ${index * 0.1}s;">
+                                    <div class="card-image-wrapper shimmer" style="margin-bottom: 1rem; border-radius: var(--border-radius); overflow: hidden; height: 180px;">
+                                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Crect fill='%23f0f0f0' width='600' height='400'/%3E%3Ctext x='50%25' y='50%25' font-size='24' text-anchor='middle' dy='.3em' fill='%23999'%3ELoading...%3C/text%3E%3C/svg%3E" data-src="${conf.image || 'assets/images/profile.jpg'}" alt="${conf.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                                    </div>
+                                    <div class="conference-type pulse" style="display: inline-block; padding: 0.25rem 0.75rem; background: var(--color-bg-secondary); border-radius: 1rem; font-size: 0.75rem; font-weight: 600; color: var(--color-accent); margin-bottom: 0.75rem;">
+                                        ${conf.type || 'Conference'}
+                                    </div>
+                                    <h3 class="card-title">${conf.title}</h3>
+                                    <div class="card-meta">
+                                        <span>📍 ${conf.location}</span>
+                                        <span>•</span>
+                                        <span>📅 ${date}</span>
+                                    </div>
+                                    <p class="card-description">${conf.description}</p>
+                                    ${tags ? `<div style="margin-top: 1rem;">${tags}</div>` : ''}
+                                </article>
+                            `;
+                        }).join('');
+                    
+                        // Lazy load images
+                        const confImages = conferencesContainer.querySelectorAll('img[data-src]');
+                        confImages.forEach(img => {
+                            const observer = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        img.src = img.dataset.src;
+                                        img.removeAttribute('data-src');
+                                        observer.unobserve(img);
+                                    }
+                                });
+                            });
+                            observer.observe(img);
                         });
-                    });
-                    observer.observe(img);
-                });
+                    } else if (conferencesContainer && featuredConferences.length === 0) {
+                        conferencesContainer.innerHTML = `
+                            <div class="card" style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
+                                <p>No conferences available at the moment.</p>
+                            </div>
+                        `;
+                    }
+                } catch (confError) {
+                    console.error('Error loading conferences:', confError);
+                    const conferencesContainer = document.getElementById('featured-conferences');
+                    if (conferencesContainer) {
+                        conferencesContainer.innerHTML = `
+                            <div class="card" style="text-align: center; padding: 3rem; grid-column: 1 / -1;">
+                                <p style="color: #dc3545;">Failed to load conferences. Please try again later.</p>
+                            </div>
+                        `;
+                    }
                 }
             } catch (error) {
                 console.error('Error loading featured content:', error);

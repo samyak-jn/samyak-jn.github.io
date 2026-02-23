@@ -7,5 +7,6 @@
   "tags": ["accessibility", "web-development", "ux"],
   "image": "assets/images/profile.jpg",
   "excerpt": "Learn how to make your websites accessible to everyone, including users with disabilities, by following WCAG guidelines and best practices.",
-  "content": "Web accessibility ensures that websites are usable by everyone, including people with disabilities. It's not just the right thing to do—it's often required by law.\n\n## Semantic HTML\n\nUse semantic HTML elements:\n\n```html\n<nav>, <main>, <article>, <section>, <header>, <footer>\n```\n\n## ARIA Labels\n\nWhen semantic HTML isn't enough, use ARIA:\n\n```html\n<button aria-label=\"Close menu\">×</button>\n```\n\n## Keyboard Navigation\n\nEnsure all interactive elements are keyboard accessible:\n\n```css\n*:focus-visible {\n  outline: 2px solid var(--accent-color);\n}\n```\n\n## Color Contrast\n\nMaintain sufficient contrast ratios (WCAG AA: 4.5:1 for text):\n\n- Use tools to check contrast\n- Don't rely on color alone to convey information\n\n## Alt Text\n\nAlways provide alt text for images:\n\n```html\n<img src=\"photo.jpg\" alt=\"Description of the image\">\n```\n\n## Screen Readers\n\nTest with screen readers like NVDA or VoiceOver to ensure your site is navigable.\n\nAccessibility benefits everyone, not just users with disabilities."
+  "contentType": "markdown",
+  "contentFile": "data/posts/4.md"
 }
