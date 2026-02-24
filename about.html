@@ -211,10 +211,12 @@
         // Load and render conferences
         async function loadConferences() {
             try {
+                console.log('Loading conferences...');
                 const indexResponse = await fetch('data/conferences/index.json');
                 if (!indexResponse.ok) throw new Error('Failed to load conferences index');
                 
                 const conferenceIds = await indexResponse.json();
+                console.log('Conference IDs:', conferenceIds);
                 
                 const conferencePromises = conferenceIds.map(id => 
                     fetch(`data/conferences/${id}.json`).then(res => res.json())
@@ -222,9 +224,14 @@
                 
                 const conferences = await Promise.all(conferencePromises);
                 conferences.sort((a, b) => new Date(b.date) - new Date(a.date));
+                console.log('Loaded conferences:', conferences.length);
+                
                 const container = document.getElementById('conferences-grid');
                 
-                if (!container) return;
+                if (!container) {
+                    console.error('Conferences grid container not found!');
+                    return;
+                }
                 
                 if (conferences.length === 0) {
                     container.innerHTML = `
@@ -264,17 +271,30 @@
                     `;
                 }).join('');
                 
-                // Trigger scroll reveal animations
-                const cards = container.querySelectorAll('.reveal');
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('revealed');
-                        }
-                    });
-                }, { threshold: 0.1 });
+                // Immediately reveal conference cards (they have their own animation)
+                const cards = container.querySelectorAll('.conference-card');
+                cards.forEach(card => {
+                    card.classList.add('revealed');
+                    // Also trigger a fade-in animation
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                });
                 
-                cards.forEach(card => observer.observe(card));
+                // Trigger scroll reveal animations for other elements
+                const otherReveals = container.querySelectorAll('.reveal:not(.conference-card)');
+                if (otherReveals.length > 0) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('revealed');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    
+                    otherReveals.forEach(el => observer.observe(el));
+                }
                 
                 // Lazy load images
                 const confImages = container.querySelectorAll('img[data-src]');

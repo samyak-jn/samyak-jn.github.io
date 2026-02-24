@@ -975,6 +975,12 @@
   transform: translateY(0);
 }
 
+/* Conference Cards - Override reveal animation */
+.conference-card.reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Conference Cards */
 .conference-card {
   position: relative;
