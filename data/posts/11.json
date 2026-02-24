@@ -1,0 +1,18 @@
+{
+  "id": "11",
+  "title": "Diff between spin and variant distributions",
+  "date": "2023-02-21",
+  "author": "Samyak Jain",
+  "readTime": "5 min",
+  "tags": [
+    "fedora",
+    "release-engineering",
+    "variants",
+    "arches"
+  ],
+  "image": "assets/images/Samyak-1.jpeg",
+  "excerpt": "Mapping out the different what a variant and a spin is in Fedora",
+  "contentType": "markdown",
+  "contentFile": "data/posts/11.md",
+  "slug": "diff-between-spin-and-variant-distributions"
+}
