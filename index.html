@@ -139,19 +139,19 @@
                 <!-- Stats Grid -->
                 <div class="stats-grid reveal">
                     <div class="stat-item">
-                        <div class="stat-number" data-target="500">0</div>
+                        <div class="stat-number" data-target="523">0</div>
                         <div class="stat-label">Contributions</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="5">0</div>
+                        <div class="stat-number" data-target="7">0</div>
                         <div class="stat-label">Years Active</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-number" data-target="47">0</div>
                         <div class="stat-label">Projects</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number" data-target="20">0</div>
+                        <div class="stat-number" data-target="23">0</div>
                         <div class="stat-label">Conferences</div>
                     </div>
                 </div>
@@ -325,7 +325,7 @@
     <footer class="footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2024 Samyak Jain. All rights reserved.</p>
+                <p>&copy; 2026 Samyak Jain. All rights reserved.</p>
                 <ul class="social-links">
                     <li>
                         <a href="https://github.com/samyak-jn" class="social-link" aria-label="GitHub">
@@ -359,11 +359,11 @@
         // Load featured posts and projects
         async function loadFeatured() {
             try {
-                // Load featured posts
+                // Load featured posts - get all posts and sort by date
                 const indexResponse = await fetch('data/posts/index.json');
                 const postIds = await indexResponse.json();
                 
-                const postPromises = postIds.slice(0, 3).map(id => 
+                const postPromises = postIds.map(id => 
                     fetch(`data/posts/${id}.json`)
                         .then(res => res.json())
                         .catch(err => {
@@ -371,10 +371,12 @@
                             return null;
                         })
                 );
-                const posts = await Promise.all(postPromises);
-                const featuredPosts = posts
+                const allPosts = await Promise.all(postPromises);
+                // Sort by date (most recent first) and take the latest 3
+                const featuredPosts = allPosts
                     .filter(post => post !== null)
-                    .sort((a, b) => new Date(b.date) - new Date(a.date));
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 3);
                 
                 const postsContainer = document.getElementById('featured-posts');
                 if (postsContainer) {
