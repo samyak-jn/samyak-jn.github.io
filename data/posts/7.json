@@ -1,0 +1,17 @@
+{
+  "id": "7",
+  "title": "Adieu, 2019 and the decade!",
+  "date": "2019-12-31",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "reflection",
+    "foss",
+    "debian"
+  ],
+  "image": "assets/images/2019-1.jpeg",
+  "excerpt": "2k19: It was a FOSS year to me!",
+  "contentType": "markdown",
+  "contentFile": "data/posts/7.md",
+  "slug": "adieu-2019-and-the-decade"
+}

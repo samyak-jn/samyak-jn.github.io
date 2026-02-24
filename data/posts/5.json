@@ -1,0 +1,18 @@
+{
+  "id": "5",
+  "title": "My journey with Debian",
+  "date": "2019-09-02",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "debian",
+    "open-source",
+    "foss",
+    "packaging"
+  ],
+  "image": "assets/images/debian.jpg",
+  "excerpt": "This is where *FOSS* entered my life !!",
+  "contentType": "markdown",
+  "contentFile": "data/posts/5.md",
+  "slug": "my-journey-with-debian"
+}

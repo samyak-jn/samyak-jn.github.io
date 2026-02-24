@@ -1,0 +1,17 @@
+{
+  "id": "6",
+  "title": "Everyone knows about APIs, but yet mislead with facts!",
+  "date": "2019-12-29",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "api",
+    "web-development",
+    "programming"
+  ],
+  "image": "assets/images/API1.png",
+  "excerpt": "Giving a clear picture to Application Programming Interface a.k.a APIs",
+  "contentType": "markdown",
+  "contentFile": "data/posts/6.md",
+  "slug": "everyone-knows-about-apis-but-yet-mislead-with-facts"
+}

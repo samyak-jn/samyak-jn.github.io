@@ -1,0 +1,17 @@
+{
+  "id": "8",
+  "title": "Starting of an adventure?",
+  "date": "2020-05-08",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "open-source",
+    "gsoc",
+    "debian"
+  ],
+  "image": "assets/images/Gsoc_2020.png",
+  "excerpt": "The one with the GSoC !!",
+  "contentType": "markdown",
+  "contentFile": "data/posts/8.md",
+  "slug": "starting-of-an-adventure"
+}

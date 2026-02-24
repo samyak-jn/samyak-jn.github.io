@@ -1,0 +1,18 @@
+{
+  "id": "9",
+  "title": "Kotlin Update!",
+  "date": "2020-06-01",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "open-source",
+    "gsoc",
+    "debian",
+    "kotlin"
+  ],
+  "image": "assets/images/Kotlin_deb.png",
+  "excerpt": "The one with Kotlin future :)",
+  "contentType": "markdown",
+  "contentFile": "data/posts/9.md",
+  "slug": "kotlin-update"
+}

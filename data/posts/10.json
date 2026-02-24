@@ -1,0 +1,19 @@
+{
+  "id": "10",
+  "title": "Ending of an adventure?",
+  "date": "2020-08-30",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "open-source",
+    "gsoc",
+    "debian",
+    "android",
+    "kotlin"
+  ],
+  "image": "assets/images/Gsoc_2020.png",
+  "excerpt": "The one where GSoC journey comes to an end.",
+  "contentType": "markdown",
+  "contentFile": "data/posts/10.md",
+  "slug": "ending-of-an-adventure"
+}
