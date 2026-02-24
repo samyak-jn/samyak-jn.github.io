@@ -145,38 +145,89 @@ class NavigationManager {
 // Scroll Reveal Animation
 class ScrollReveal {
   constructor() {
-    this.elements = document.querySelectorAll('.reveal');
+    this.observer = null;
+    this.elements = [];
     this.init();
   }
 
   init() {
-    if (this.elements.length === 0) return;
+    // Use IntersectionObserver for better performance and accuracy
+    if ('IntersectionObserver' in window) {
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            // Unobserve once revealed for performance
+            this.observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1, // Trigger when 10% visible
+        rootMargin: '50px' // Start revealing slightly before entering viewport
+      });
+    }
     
-    // Check on load
-    this.checkElements();
+    // Initial check for elements already in viewport
+    this.checkInitialElements();
     
-    // Check on scroll (debounced)
-    const checkOnScroll = debounce(() => this.checkElements(), 100);
-    window.addEventListener('scroll', checkOnScroll);
-    window.addEventListener('resize', checkOnScroll);
+    // Watch for dynamically added elements
+    this.watchForNewElements();
   }
 
-  checkElements() {
-    this.elements.forEach(element => {
+  checkInitialElements() {
+    const elements = document.querySelectorAll('.reveal:not(.revealed)');
+    elements.forEach(element => {
+      // Check if already in viewport
       if (this.isInViewport(element)) {
         element.classList.add('revealed');
+      } else if (this.observer) {
+        this.observer.observe(element);
       }
     });
   }
 
+  watchForNewElements() {
+    // Use MutationObserver to watch for dynamically added elements
+    if ('MutationObserver' in window) {
+      const mutationObserver = new MutationObserver(() => {
+        this.checkInitialElements();
+      });
+      
+      mutationObserver.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    }
+    
+    // Also check periodically for elements added via innerHTML
+    setInterval(() => {
+      this.checkInitialElements();
+    }, 500);
+  }
+
   isInViewport(element) {
     const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const windowWidth = window.innerWidth || document.documentElement.clientWidth;
+    
+    // More lenient check - element is considered in viewport if any part is visible
     return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      rect.top < windowHeight &&
+      rect.bottom > 0 &&
+      rect.left < windowWidth &&
+      rect.right > 0
     );
+  }
+
+  // Public method to add new elements
+  addElement(element) {
+    if (element && element.classList.contains('reveal') && !element.classList.contains('revealed')) {
+      if (this.isInViewport(element)) {
+        element.classList.add('revealed');
+      } else if (this.observer) {
+        this.observer.observe(element);
+      }
+    }
   }
 }
 
@@ -377,7 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationManager();
   
   // Initialize scroll reveal
-  new ScrollReveal();
+  window.scrollReveal = new ScrollReveal();
   
   // Initialize scroll effects
   new ScrollEffects();
