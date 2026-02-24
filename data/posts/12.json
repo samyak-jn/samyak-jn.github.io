@@ -1,0 +1,17 @@
+{
+  "id": "12",
+  "title": "From Dosas to Doodles: My DevConf India Story",
+  "date": "2026-02-21",
+  "author": "Samyak Jain",
+  "readTime": "8 min",
+  "tags": [
+    "conference",
+    "public-speaking",
+    "fedora"
+  ],
+  "image": "assets/images/doodledevconfin.png",
+  "excerpt": "event report for samyak for devconf india happened at MIT WPU Pune, India.",
+  "contentType": "markdown",
+  "contentFile": "data/posts/12.md",
+  "slug": "from-dosas-to-doodles-my-devconf-india-story"
+}
