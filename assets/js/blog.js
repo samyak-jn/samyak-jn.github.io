@@ -317,7 +317,7 @@ class BlogManager {
         </header>
         ${post.image ? `
           <div class="post-image" style="margin: 2rem 0; border-radius: var(--border-radius-lg); overflow: hidden;">
-            <img src="${post.image}" alt="${post.title}" style="width: 100%; height: auto; display: block; max-height: 500px; object-fit: cover;">
+            <img src="${post.image}" alt="${post.title}" style="width: 100%; height: auto; display: block; object-fit: contain;">
           </div>
         ` : ''}
         <div class="post-content">
