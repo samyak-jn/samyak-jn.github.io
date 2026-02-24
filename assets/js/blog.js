@@ -15,10 +15,10 @@ class BlogManager {
   }
 
   async init() {
-    // Check if we're on a blog post page
-    const postId = getQueryParam('id');
-    if (postId) {
-      await this.loadPost(postId);
+    // Check if we're on a blog post page (support both slug and id for backward compatibility)
+    const postSlug = getQueryParam('slug') || getQueryParam('id');
+    if (postSlug) {
+      await this.loadPost(postSlug);
       return;
     }
     
@@ -60,15 +60,63 @@ class BlogManager {
     }
   }
 
-  async loadPost(postId) {
+  async loadPost(postSlugOrId) {
     try {
-      const response = await fetch(`data/posts/${postId}.json`);
-      if (!response.ok) throw new Error('Failed to load post');
+      // First, try to load by ID (for backward compatibility)
+      let post = null;
+      try {
+        const response = await fetch(`data/posts/${postSlugOrId}.json`);
+        if (response.ok) {
+          post = await response.json();
+          // If the slug doesn't match, it might be an old ID link, so continue
+          if (post.slug && post.slug !== postSlugOrId && !postSlugOrId.match(/^\d+$/)) {
+            post = null; // Slug mismatch, need to search
+          }
+        }
+      } catch (e) {
+        // Not found by ID, will search by slug
+      }
       
-      const post = await response.json();
+      // If not found by ID, search by slug
+      if (!post) {
+        const indexResponse = await fetch('data/posts/index.json');
+        if (!indexResponse.ok) throw new Error('Failed to load posts index');
+        
+        const postIds = await indexResponse.json();
+        const postPromises = postIds.map(id => 
+          fetch(`data/posts/${id}.json`)
+            .then(res => res.json())
+            .catch(() => null)
+        );
+        
+        const posts = await Promise.all(postPromises);
+        post = posts.find(p => p && (p.slug === postSlugOrId || p.id === postSlugOrId));
+      }
       
       if (!post) {
         this.showError('Post not found.');
+        return;
+      }
+      
+      // Load markdown content if needed
+      if (post.contentType === 'markdown' && post.contentFile) {
+        try {
+          const contentResponse = await fetch(post.contentFile);
+          if (contentResponse.ok) {
+            post.content = await contentResponse.text();
+          } else {
+            throw new Error('Failed to load markdown content');
+          }
+        } catch (error) {
+          console.error('Error loading markdown content:', error);
+          this.showError('Failed to load post content. Please try again later.');
+          return;
+        }
+      }
+      
+      // Ensure content exists
+      if (!post.content) {
+        this.showError('Post content is missing.');
         return;
       }
       
@@ -131,7 +179,7 @@ class BlogManager {
           </div>
         ` : ''}
         <h2 class="card-title">
-          <a href="post.html?id=${post.id}" style="text-decoration: none; color: inherit;">
+          <a href="post.html?slug=${post.slug || post.id}" style="text-decoration: none; color: inherit;">
             ${this.searchTerm ? highlightText(post.title, this.searchTerm) : post.title}
           </a>
         </h2>
@@ -145,7 +193,7 @@ class BlogManager {
         </div>
         <div class="card-footer">
           <div class="filter-tags">${tags}</div>
-          <a href="post.html?id=${post.id}" class="btn btn-primary">Read More</a>
+          <a href="post.html?slug=${post.slug || post.id}" class="btn btn-primary">Read More</a>
         </div>
       </article>
     `;

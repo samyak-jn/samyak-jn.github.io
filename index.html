@@ -364,10 +364,17 @@
                 const postIds = await indexResponse.json();
                 
                 const postPromises = postIds.slice(0, 3).map(id => 
-                    fetch(`data/posts/${id}.json`).then(res => res.json())
+                    fetch(`data/posts/${id}.json`)
+                        .then(res => res.json())
+                        .catch(err => {
+                            console.error(`Failed to load post ${id}:`, err);
+                            return null;
+                        })
                 );
                 const posts = await Promise.all(postPromises);
-                const featuredPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                const featuredPosts = posts
+                    .filter(post => post !== null)
+                    .sort((a, b) => new Date(b.date) - new Date(a.date));
                 
                 const postsContainer = document.getElementById('featured-posts');
                 if (postsContainer) {
@@ -379,15 +386,15 @@
                                 </div>
                             ` : ''}
                             <h3 class="card-title">
-                                <a href="post.html?id=${post.id}" style="text-decoration: none; color: inherit;">
+                                <a href="post.html?slug=${post.slug || post.id}" style="text-decoration: none; color: inherit;">
                                     ${post.title}
                                 </a>
                             </h3>
                             <div class="card-meta">
                                 <span>${new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                             </div>
-                            <p class="card-description">${post.excerpt || post.content.substring(0, 120) + '...'}</p>
-                            <a href="post.html?id=${post.id}" class="btn btn-primary">Read More</a>
+                            <p class="card-description">${post.excerpt || (post.content ? post.content.substring(0, 120) + '...' : '')}</p>
+                            <a href="post.html?slug=${post.slug || post.id}" class="btn btn-primary">Read More</a>
                         </article>
                     `).join('');
                     
