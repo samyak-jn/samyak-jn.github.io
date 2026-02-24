@@ -271,29 +271,45 @@
                     `;
                 }).join('');
                 
-                // Immediately reveal conference cards (they have their own animation)
-                const cards = container.querySelectorAll('.conference-card');
-                cards.forEach(card => {
-                    card.classList.add('revealed');
-                    // Also trigger a fade-in animation
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
+                // Immediately reveal conference cards using ScrollReveal system
+                const cards = container.querySelectorAll('.conference-card.reveal');
+                cards.forEach((card, index) => {
+                    requestAnimationFrame(() => {
+                        if (window.scrollReveal) {
+                            window.scrollReveal.addElement(card);
+                        } else {
+                            // Fallback: reveal immediately with stagger
+                            setTimeout(() => {
+                                card.classList.add('revealed');
+                            }, index * 50);
+                        }
+                    });
                 });
                 
-                // Trigger scroll reveal animations for other elements
-                const otherReveals = container.querySelectorAll('.reveal:not(.conference-card)');
-                if (otherReveals.length > 0) {
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('revealed');
-                            }
-                        });
-                    }, { threshold: 0.1 });
-                    
-                    otherReveals.forEach(el => observer.observe(el));
+                // Handle hash navigation - scroll to conferences section if hash is present
+                if (window.location.hash === '#conferences') {
+                    setTimeout(() => {
+                        const conferencesSection = document.getElementById('conferences');
+                        if (conferencesSection) {
+                            const offset = 80; // Account for fixed navbar
+                            const elementPosition = conferencesSection.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - offset;
+                            
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                            
+                            // Ensure cards are visible after scroll
+                            setTimeout(() => {
+                                cards.forEach(card => {
+                                    if (!card.classList.contains('revealed')) {
+                                        card.classList.add('revealed');
+                                    }
+                                });
+                            }, 500);
+                        }
+                    }, 100);
                 }
                 
                 // Lazy load images
@@ -324,7 +340,41 @@
             }
         }
         
-        document.addEventListener('DOMContentLoaded', loadConferences);
+        // Load conferences when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadConferences);
+        } else {
+            // DOM already loaded
+            loadConferences();
+        }
+        
+        // Handle hash navigation on page load
+        window.addEventListener('load', () => {
+            if (window.location.hash === '#conferences') {
+                setTimeout(() => {
+                    const conferencesSection = document.getElementById('conferences');
+                    if (conferencesSection) {
+                        const offset = 80;
+                        const elementPosition = conferencesSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - offset;
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Ensure cards reveal after scroll
+                        setTimeout(() => {
+                            const cards = document.querySelectorAll('.conference-card.reveal');
+                            cards.forEach(card => {
+                                if (!card.classList.contains('revealed')) {
+                                    card.classList.add('revealed');
+                                }
+                            });
+                        }, 500);
+                    }
+                }, 300);
+            }
+        });
     </script>
 </body>
 </html>
