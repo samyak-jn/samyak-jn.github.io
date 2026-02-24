@@ -94,16 +94,24 @@ class BlogManager {
     
     container.innerHTML = this.filteredPosts.map(post => this.createPostCard(post)).join('');
     
-    // Add fade-in animation
-    const cards = container.querySelectorAll('.card');
+    // Use ScrollReveal system for consistent animations
+    const cards = container.querySelectorAll('.card.reveal');
     cards.forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-        card.style.opacity = '1';
-        card.style.transform = 'translateY(0)';
-      }, index * 100);
+      requestAnimationFrame(() => {
+        if (window.scrollReveal) {
+          window.scrollReveal.addElement(card);
+        } else {
+          // Fallback: reveal with stagger animation
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+            card.classList.add('revealed');
+          }, index * 100);
+        }
+      });
     });
   }
 
