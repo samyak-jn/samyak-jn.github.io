@@ -1,0 +1,19 @@
+{
+  "id": "14",
+  "title": "How koji and pungi works together?",
+  "date": "2023-04-18",
+  "author": "Samyak Jain",
+  "readTime": "6 min",
+  "tags": [
+    "fedora",
+    "release-engineering",
+    "pungi",
+    "koji",
+    "build"
+  ],
+  "image": "assets/images/fedora-mark.png",
+  "excerpt": "Understanding how Koji build system and Pungi work together to create custom operating system images.",
+  "contentType": "markdown",
+  "contentFile": "data/posts/14.md",
+  "slug": "how-koji-and-pungi-works-together"
+}
