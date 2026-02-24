@@ -10,7 +10,7 @@
     "variants",
     "arches"
   ],
-  "image": "assets/images/Samyak-1.jpeg",
+  "image": "assets/images/fedora-mark.png",
   "excerpt": "Mapping out the different what a variant and a spin is in Fedora",
   "contentType": "markdown",
   "contentFile": "data/posts/11.md",

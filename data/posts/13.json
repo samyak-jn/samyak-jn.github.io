@@ -1,0 +1,18 @@
+{
+  "id": "13",
+  "title": "Init: Pungi",
+  "date": "2023-03-31",
+  "author": "Samyak Jain",
+  "readTime": "6 min",
+  "tags": [
+    "pungi",
+    "fedora",
+    "build-system",
+    "linux"
+  ],
+  "image": "assets/images/fedora-mark.png",
+  "excerpt": "Pungi in fedora, explained in layman terms.",
+  "contentType": "markdown",
+  "contentFile": "data/posts/13.md",
+  "slug": "init-pungi"
+}
